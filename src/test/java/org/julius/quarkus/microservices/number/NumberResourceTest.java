@@ -12,7 +12,7 @@ public class NumberResourceTest {
     @Test
     public void testRandomIsbnNumbersEndpoint() {
         given()
-          .when().get("/api/numbers")
+          .when().get("/api/numbers/random")
           .then()
              .statusCode(200);
              //.body("isbn10", );
