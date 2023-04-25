@@ -22,7 +22,7 @@ public class NumberResource {
     @GET
     @Path("/random")
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Generates random ISBN numbers for books", description = "some more description")
+    @Operation(summary = "Generates random ISBN numbers for books", description = "some more description about ISBN10 and ISBN13 numbers")
     public IsbnNumbers getRandomIsbnNumbers() {
         IsbnNumbers isbnNumbers = new IsbnNumbers();
         isbnNumbers.setIsbn10("10-" + new Random().nextInt(1_000_000));
