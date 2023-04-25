@@ -10,12 +10,12 @@ import static org.hamcrest.CoreMatchers.is;
 public class NumberResourceTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testRandomIsbnNumbersEndpoint() {
         given()
-          .when().get("/C:/Program Files/Git/api/numbers")
+          .when().get("/api/numbers")
           .then()
-             .statusCode(200)
-             .body(is("Hello RESTEasy"));
+             .statusCode(200);
+             //.body("isbn10", );
     }
 
 }
