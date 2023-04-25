@@ -1,11 +1,18 @@
 package org.julius.quarkus.microservices.number;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import javax.json.bind.annotation.JsonbTransient;
 import java.time.Instant;
 
+@Schema(description = "several ISBN numbers for books")
 public class IsbnNumbers {
 
+    @Schema(required = true, example = "10-000000")
     private String isbn10;
+    @Schema(required = true, example = "13-000000000")
     private String isbn13;
+    //@JsonbTransient
     private Instant generationTime;
 
     public String getIsbn10(){
