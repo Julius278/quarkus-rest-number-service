@@ -1,10 +1,11 @@
 package org.julius.quarkus.microservices.number;
 
 import io.quarkus.test.junit.QuarkusTest;
+import org.hamcrest.collection.IsMapContaining;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 
 @QuarkusTest
 public class NumberResourceTest {
@@ -14,8 +15,10 @@ public class NumberResourceTest {
         given()
           .when().get("/api/numbers/random")
           .then()
-             .statusCode(200);
-             //.body("isbn10", );
+                .statusCode(200)
+                .body("isbn10", startsWith("10-"))
+                .body("isbn13", startsWith("13-"))
+                .body(not(IsMapContaining.hasKey("generationDate")));
     }
 
 }

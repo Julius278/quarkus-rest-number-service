@@ -15,7 +15,7 @@ public class IsbnNumbers {
     @Schema(required = true, example = "13-000000000")
     @JsonbProperty("isbn13")
     private String isbn13;
-    //@JsonbTransient
+    @JsonbTransient
     private Instant generationTime;
 
     public String getIsbn10(){
