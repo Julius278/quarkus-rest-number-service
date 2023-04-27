@@ -2,7 +2,6 @@ package org.julius.quarkus.microservices.number;
 
 import io.quarkus.test.junit.QuarkusTest;
 
-import org.hamcrest.collection.IsMapContaining;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
