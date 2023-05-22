@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven and quarkus native verify
+name: Deploy to AWS Lambda, native build
 
 on:
   push:
