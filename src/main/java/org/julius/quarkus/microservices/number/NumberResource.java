@@ -10,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.time.Instant;
+import java.util.Optional;
 import java.util.Random;
 
 @Path("/api/numbers")
@@ -36,13 +37,26 @@ public class NumberResource {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "just for testing purpose", description = "just for testing purpose")
-    public Response saveRandomIsbnTenNumber(@FormParam("isbn10") String isbn10) {
-        IsbnNumbers isbnNumbers = new IsbnNumbers();
-        isbnNumbers.setIsbn10(isbn10);
+    public Response saveRandomIsbnTenNumber(Optional<IsbnNumbers> isbn10) {
 
-        isbnNumbers.setIsbn13("nn");
+        logger.info("saveRandomIsbnTenNumber");
 
-        return Response.accepted(isbnNumbers).build();
+        IsbnNumbers isbnNumbers;
+
+        if (isbn10.isPresent()) {
+            isbnNumbers = new IsbnNumbers();
+
+            IsbnNumbers isbnNumbers10 = isbn10.get();
+
+            if (isbnNumbers10.getIsbn10() != null) {
+                isbnNumbers.setIsbn10(isbnNumbers10.getIsbn10());
+            }
+
+            isbnNumbers.setIsbn13("nn");
+            return Response.accepted(isbnNumbers).build();
+        }
+        return Response.status(415).build();
     }
 }
