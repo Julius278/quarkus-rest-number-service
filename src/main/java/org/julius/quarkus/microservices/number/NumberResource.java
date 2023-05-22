@@ -4,6 +4,7 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.jboss.logging.Logger;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,6 +22,7 @@ public class NumberResource {
 
     @GET
     @Path("/random")
+    @RequestScoped
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Generates random ISBN numbers for books", description = "some more description about ISBN10 and ISBN13 numbers")
     public IsbnNumbers getRandomIsbnNumbers() {
