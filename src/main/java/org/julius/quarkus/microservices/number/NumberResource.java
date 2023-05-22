@@ -17,7 +17,7 @@ import java.util.Random;
 public class NumberResource {
 
     @Inject
-    private Logger logger;
+    Logger logger;
 
     @GET
     @Path("/random")
