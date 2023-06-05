@@ -38,6 +38,20 @@ public class NumberResource {
         return isbnNumbers;
     }
 
+    @GET
+    @Path("/fix")
+    @Operation(summary = "returns a fixed number", description = "returns a fixed number")
+    public IsbnNumbers getFixedIsbnNumbers() {
+        IsbnNumbers isbnNumbers = new IsbnNumbers();
+        isbnNumbers.setIsbn10("10-1234567");
+        isbnNumbers.setIsbn13("13-0123456789");
+        isbnNumbers.setGenerationTime(Instant.now());
+
+        logger.info("Endpoint getFixedIsbnNumbers: " + isbnNumbers.toString());
+
+        return isbnNumbers;
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "just for testing purpose", description = "just for testing purpose")
