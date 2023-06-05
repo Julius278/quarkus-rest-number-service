@@ -1,14 +1,16 @@
 package org.julius.quarkus.microservices.number;
 
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.jboss.logging.Logger;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.Random;
@@ -39,6 +41,11 @@ public class NumberResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "just for testing purpose", description = "just for testing purpose")
+    @APIResponses(value = {
+            @APIResponse(description = "accepted", responseCode = "202", name = "default"),
+            @APIResponse(description = "unknown error", responseCode = "50x"),
+            @APIResponse(description = "wrong input type", responseCode = "415")
+    })
     public Response saveRandomIsbnTenNumber(Optional<IsbnNumbers> isbn10) {
 
         logger.info("saveRandomIsbnTenNumber");

@@ -1,9 +1,9 @@
 package org.julius.quarkus.microservices.number;
 
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbTransient;
 import java.time.Instant;
 
 @Schema(description = "several ISBN numbers for books")
